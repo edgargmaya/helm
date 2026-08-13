@@ -1,0 +1,14 @@
+apiVersion: v2
+name: ora-microservice-api
+description: Reusable Helm chart for hardened Kubernetes microservice APIs with optional ExternalSecrets, NetworkPolicy, and HPA
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+kubeVersion: ">=1.25.0-0"
+keywords:
+  - microservice
+  - deployment
+  - external-secrets
+home: https://github.com/example/ora-helmchart
+maintainers:
+  - name: (ORA) DevOps Engineering Team

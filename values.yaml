@@ -1,0 +1,173 @@
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: ""
+  tag: ""
+  digest: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+replicaCount: 1
+
+commonLabels: {}
+podLabels: {}
+podAnnotations: {}
+deploymentLabels: {}
+deploymentAnnotations: {}
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+  labels: {}
+  automountServiceAccountToken: false
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  capabilities:
+    drop:
+      - ALL
+  seccompProfile:
+    type: RuntimeDefault
+
+containerName: ""
+
+containerPorts:
+  - name: http
+    containerPort: 8080
+    protocol: TCP
+
+command: []
+args: []
+
+workingDir: ""
+
+probes:
+  liveness:
+    httpGet:
+      path: ""
+      port: http
+      scheme: HTTP
+      httpHeaders: []
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+    successThreshold: 1
+  readiness:
+    httpGet:
+      path: ""
+      port: http
+      scheme: HTTP
+      httpHeaders: []
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+    successThreshold: 1
+  startup: null
+
+lifecycle: {}
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+env: []
+envFrom: []
+
+volumeMounts: []
+volumes: []
+
+initContainers: []
+sidecars: []
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+topologySpreadConstraints: []
+priorityClassName: ""
+runtimeClassName: ""
+schedulerName: ""
+dnsPolicy: ""
+dnsConfig: {}
+hostAliases: []
+hostNetwork: false
+hostPID: false
+hostIPC: false
+shareProcessNamespace: false
+terminationGracePeriodSeconds: 30
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 0
+    maxSurge: 1
+revisionHistoryLimit: 3
+progressDeadlineSeconds: 600
+minReadySeconds: 0
+
+service:
+  enabled: true
+  type: ClusterIP
+  annotations: {}
+  labels: {}
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  sessionAffinity: None
+  sessionAffinityConfig: {}
+  externalTrafficPolicy: ""
+  internalTrafficPolicy: ""
+  loadBalancerClass: ""
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  clusterIP: ""
+  publishNotReadyAddresses: false
+  ipFamilyPolicy: ""
+  ipFamilies: []
+
+networkPolicy:
+  enabled: false
+  annotations: {}
+  labels: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  podSelector: {}
+  ingress: []
+  egress: []
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 10
+  annotations: {}
+  labels: {}
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage:
+  behavior: {}
+  metrics: []
+
+externalSecrets:
+  enabled: false
+  apiVersion: external-secrets.io/v1beta1
+  secrets: []
